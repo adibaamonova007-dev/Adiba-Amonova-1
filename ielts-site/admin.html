@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<style>
+body{
+font-family: Arial;
+background:#f4f6f8;
+padding:40px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+input,button{
+width:100%;
+padding:12px;
+margin-top:10px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+#dashboard{
+display:none;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Admin Login</h2>
+
+<input type="password" id="password" placeholder="Enter admin password">
+<button onclick="login()">Login</button>
+
+<div id="dashboard">
+<h3>Admin Dashboard</h3>
+
+<p>Add new IELTS announcement:</p>
+
+<input type="text" id="announcement" placeholder="Write announcement">
+
+<button onclick="publish()">Publish</button>
+
+<p id="result"></p>
+
+</div>
+
+</div>
+
+<script>
+
+function login(){
+let pass = document.getElementById("password").value;
+
+if(pass === "admin123"){
+document.getElementById("dashboard").style.display="block";
+}else{
+alert("Wrong password");
+}
+}
+
+function publish(){
+let text = document.getElementById("announcement").value;
+
+localStorage.setItem("announcement",text);
+
+document.getElementById("result").innerText="Announcement saved!";
+}
+
+</script>
+
+</body>
+</html>

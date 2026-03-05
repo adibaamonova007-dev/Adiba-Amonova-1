@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Adiba's IELTS – Master English</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="go('home')">📖 Adiba's IELTS</div>
+    <div class="nav-links">
+      <a onclick="go('leaderboard')">Leaderboard</a>
+      <a onclick="go('writing')">Writing</a>
+      <a onclick="go('speaking')">Speaking</a>
+      <a onclick="go('articles')">Articles</a>
+    </div>
+    <div class="nav-auth" id="nav-auth">
+      <span class="btn btn-ghost" onclick="go('login')">Login</span>
+      <span class="btn btn-primary" onclick="go('signup')">Sign Up</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HOME ═══════════════════════ -->
+<div id="pg-home" class="page active">
+  <section class="hero">
+    <h1>Master English with<br>Effective Learning</h1>
+    <p>Comprehensive IELTS preparation with AI-powered tools, practice tests, and personalized feedback to help you achieve your target score.</p>
+    <div class="hero-btns">
+      <span class="btn btn-primary" onclick="go('signup')">Get Started Free</span>
+      <span class="btn btn-outline" onclick="go('mock')">Take Mock Test</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="sec-hdr">
+        <h2>Complete IELTS Preparation</h2>
+        <p>Practice all four sections with our comprehensive tools</p>
+      </div>
+      <div class="features-grid">
+        <div class="feat-card" onclick="go('vocabulary')">
+          <div class="feat-icon" style="background:#eff6ff">📖</div>
+          <h3>Vocabulary Practice</h3>
+          <p>Master essential IELTS words with interactive flashcards</p>
+        </div>
+        <div class="feat-card" onclick="go('listening')">
+          <div class="feat-icon" style="background:#f5f3ff">🎧</div>
+          <h3>Listening Practice</h3>
+          <p>Improve listening skills with IELTS-style audio exercises</p>
+        </div>
+        <div class="feat-card" onclick="go('reading')">
+          <div class="feat-icon" style="background:#f0fdf4">📄</div>
+          <h3>Reading Practice</h3>
+          <p>Practice with authentic passages and comprehension questions</p>
+        </div>
+        <div class="feat-card" onclick="go('writing')">
+          <div class="feat-icon" style="background:#fff7ed">✏️</div>
+          <h3>Writing Practice</h3>
+          <p>Enhance your writing with guided essay prompts</p>
+        </div>
+        <div class="feat-card" onclick="go('speaking')">
+          <div class="feat-icon" style="background:#fef2f2">🎤</div>
+          <h3>Speaking Practice</h3>
+          <p>Prepare for speaking tests with topic-based questions</p>
+        </div>
+        <div class="feat-card" onclick="go('mock')">
+          <div class="feat-icon" style="background:#fefce8">🏆</div>
+          <h3>Full Mock Test</h3>
+          <p>Take timed IELTS simulation covering all 4 sections</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefits-sec">
+    <div class="section-inner">
+      <div class="sec-hdr">
+        <h2>Why Choose Adiba's IELTS?</h2>
+        <p>The smartest way to prepare for IELTS</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit"><div class="benefit-icon">📈</div><h3>Track Your Progress</h3><p>Monitor improvement with detailed analytics</p></div>
+        <div class="benefit"><div class="benefit-icon">👥</div><h3>Join Community</h3><p>Learn together with thousands of students</p></div>
+        <div class="benefit"><div class="benefit-icon">⚡</div><h3>AI-Powered Feedback</h3><p>Get instant corrections and suggestions</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-sec">
+    <h2>Ready to Start Your IELTS Journey?</h2>
+    <p>Join thousands of successful students who achieved their target scores</p>
+    <span class="btn btn-primary cta-big" onclick="go('mock')">Take Your First Test</span>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">📖 Adiba's IELTS</div>
+          <p>Master English with effective IELTS preparation platform</p>
+        </div>
+        <div class="footer-col">
+          <h3>Practice</h3>
+          <ul>
+            <li><a onclick="go('vocabulary')">Vocabulary</a></li>
+            <li><a onclick="go('listening')">Listening</a></li>
+            <li><a onclick="go('reading')">Reading</a></li>
+            <li><a onclick="go('writing')">Writing</a></li>
+            <li><a onclick="go('speaking')">Speaking</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul>
+            <li><a onclick="go('mock')">Mock Test</a></li>
+            <li><a onclick="go('articles')">Articles</a></li>
+            <li><a onclick="go('leaderboard')">Leaderboard</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Tools</h3>
+          <ul>
+            <li><a onclick="go('writing')">AI Writing Check</a></li>
+            <li><a onclick="go('speaking')">Speaking Practice</a></li>
+            <li><a onclick="go('leaderboard')">Results</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-btm">© 2026 Adiba's IELTS. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════ VOCABULARY ═══════════════════════ -->
+<div id="pg-vocabulary" class="page">
+  <div class="prac-hdr">
+    <h1>📖 Vocabulary Practice</h1>
+    <p>Master essential IELTS words with interactive flashcards</p>
+  </div>
+  <div class="vocab-area">
+    <div class="prog-wrap">
+      <small><span id="vc-learned">0 learned</span><span id="vc-lbl">Card 1 of 6</span></small>
+      <div class="prog-bar"><div class="prog-fill" id="vc-fill" style="width:16.6%"></div></div>
+    </div>
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="fc-inner">
+        <div class="card-face card-front">
+          <div class="fc-badge" id="vc-level">Intermediate</div>
+          <div class="fc-word" id="vc-word">Abundant</div>
+          <div class="fc-pos" id="vc-pos">Adjective</div>
+        </div>
+        <div class="card-face card-back">
+          <div class="fc-def" id="vc-def">Existing or available in large quantities; plentiful</div>
+          <div class="fc-ex" id="vc-ex">"The region has abundant natural resources."</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-controls">
+      <span class="btn btn-outline" onclick="prevCard()">← Previous</span>
+      <span class="btn btn-muted" onclick="flipCard()">🔄 Flip</span>
+      <span class="btn btn-primary" onclick="nextCard()">Next →</span>
+    </div>
+    <div class="card-learn-wrap">
+      <span class="btn btn-green" onclick="markLearned()" id="vc-lbtn">✓ Mark as Learned</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ LISTENING ═══════════════════════ -->
+<div id="pg-listening" class="page">
+  <div class="prac-hdr">
+    <h1>🎧 Listening Practice</h1>
+    <p>Improve your listening skills with IELTS-style audio exercises</p>
+  </div>
+  <div class="listening-area">
+    <div class="audio-player">
+      <h3>Section 1 – Conversation at a Hotel</h3>
+      <p>A guest is making a reservation. Listen carefully and answer the questions below.</p>
+      <div class="audio-controls">
+        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+        <div class="audio-bar">
+          <div id="audio-prog" class="audio-progress"></div>
+        </div>
+        <span class="audio-time" id="audio-time">0:00 / 2:45</span>
+      </div>
+    </div>
+    <div class="qs-list">
+      <div class="q-box"><p>1. What type of room does the guest want?</p><label><input type="radio" name="lq1"> Single room</label><label><input type="radio" name="lq1"> Double room</label><label><input type="radio" name="lq1"> Suite</label><label><input type="radio" name="lq1"> Twin room</label></div>
+      <div class="q-box"><p>2. How many nights will the guest stay?</p><label><input type="radio" name="lq2"> Two nights</label><label><input type="radio" name="lq2"> Three nights</label><label><input type="radio" name="lq2"> Five nights</label><label><input type="radio" name="lq2"> One week</label></div>
+      <div class="q-box"><p>3. What special request does the guest make?</p><label><input type="radio" name="lq3"> Early check-in</label><label><input type="radio" name="lq3"> Airport pickup</label><label><input type="radio" name="lq3"> Quiet room</label><label><input type="radio" name="lq3"> Sea view</label></div>
+      <span class="btn btn-primary btn-full" onclick="toast('Answers submitted! Great work 🎉')">Submit Answers</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ READING ═══════════════════════ -->
+<div id="pg-reading" class="page">
+  <div class="prac-hdr">
+    <h1>📄 Reading Practice</h1>
+    <p>Practice with authentic passages and comprehension questions</p>
+  </div>
+  <div class="reading-area">
+    <div class="reading-passage">
+      <h2>The Impact of Urban Green Spaces</h2>
+      <p>Urban green spaces — parks, gardens, tree-lined streets, and other vegetated areas — play a critical role in the health and well-being of city residents. As urbanisation continues to accelerate globally, the value of these areas has become increasingly recognised by urban planners and public health researchers alike.</p>
+      <p>Studies have consistently shown that access to green spaces is associated with lower levels of stress, improved mental health, and greater physical activity. A 2019 study published in <em>Scientific Reports</em> found that people who spent at least two hours per week in natural environments reported significantly higher levels of health and well-being compared to those who did not.</p>
+      <p>Beyond individual health benefits, urban greenery provides what scientists call "ecosystem services" — benefits that healthy ecosystems provide to humans. These include air purification through the absorption of pollutants, temperature regulation via the "urban heat island" effect, flood mitigation through better water absorption, and the promotion of biodiversity.</p>
+      <p>Despite these benefits, green spaces in cities face numerous threats. Rapid urban development, rising land values, and budget constraints often result in the reduction or degradation of existing parks and green corridors. This is particularly acute in lower-income neighbourhoods, where residents may have significantly less access to quality green spaces.</p>
+      <p>Cities such as Singapore and Vienna have become global models for integrating nature into urban design, demonstrating that densely populated cities can prioritise greenery without sacrificing economic development.</p>
+    </div>
+    <div class="qs-list">
+      <div class="q-box"><p>1. Minimum weekly time in nature linked to improved well-being?</p><label><input type="radio" name="rq1"> One hour</label><label><input type="radio" name="rq1"> Two hours</label><label><input type="radio" name="rq1"> Four hours</label><label><input type="radio" name="rq1"> Thirty minutes</label></div>
+      <div class="q-box"><p>2. "Ecosystem services" include which of the following?</p><label><input type="radio" name="rq2"> Economic development</label><label><input type="radio" name="rq2"> Air purification</label><label><input type="radio" name="rq2"> Urban land value growth</label><label><input type="radio" name="rq2"> Increased tourism</label></div>
+      <div class="q-box"><p>3. Which cities are cited as models for integrating nature?</p><label><input type="radio" name="rq3"> London and Tokyo</label><label><input type="radio" name="rq3"> New York and Dubai</label><label><input type="radio" name="rq3"> Singapore and Vienna</label><label><input type="radio" name="rq3"> Paris and Berlin</label></div>
+      <div class="q-box"><p>4. Which groups have least access to green spaces?</p><label><input type="radio" name="rq4"> Elderly residents</label><label><input type="radio" name="rq4"> Children in schools</label><label><input type="radio" name="rq4"> Lower-income neighbourhoods</label><label><input type="radio" name="rq4"> City centre workers</label></div>
+      <span class="btn btn-green btn-full" onclick="checkReading()">Submit Answers</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ WRITING ═══════════════════════ -->
+<div id="pg-writing" class="page">
+  <div class="prac-hdr">
+    <h1>✏️ Writing Practice</h1>
+    <p>Enhance your writing with guided essay prompts and feedback</p>
+  </div>
+  <div class="writing-layout">
+    <div class="prompt-sidebar">
+      <h3>Select a Prompt</h3>
+      <button class="prompt-btn active" onclick="selPrompt(0,this)">
+        <div class="ptype">Task 2 – Opinion Essay</div>
+        <div class="ptask">Academic Writing</div>
+      </button>
+      <button class="prompt-btn" onclick="selPrompt(1,this)">
+        <div class="ptype">Task 2 – Problem/Solution</div>
+        <div class="ptask">Academic Writing</div>
+      </button>
+      <button class="prompt-btn" onclick="selPrompt(2,this)">
+        <div class="ptype">Task 1 – Letter Writing</div>
+        <div class="ptask">General Training</div>
+      </button>
+    </div>
+    <div class="writing-main">
+      <div class="card-box">
+        <h2 id="wp-type">Task 2 – Opinion Essay</h2>
+        <p id="wp-prompt">Some people believe that universities should focus on providing academic skills, while others think that universities should prepare students for their future careers. Discuss both views and give your own opinion.</p>
+        <div class="tips-box">
+          <h4>Tips:</h4>
+          <ul id="wp-tips">
+            <li>Write at least 250 words</li>
+            <li>Include an introduction, body paragraphs, and conclusion</li>
+            <li>Present both viewpoints before giving your opinion</li>
+            <li>Use formal academic language</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-box">
+        <div class="wc-row">
+          <h3>Your Response</h3>
+          <span class="wc" id="wc-disp">0 / 250 words</span>
+        </div>
+        <textarea id="essay-ta" placeholder="Start writing your response here..." oninput="updateWC()" rows="13"></textarea>
+        <div class="essay-btns">
+          <span class="btn btn-primary btn-flex" onclick="submitEssay()" id="sub-btn">📤 Submit for Review</span>
+          <span class="btn btn-ghost btn-border" onclick="resetEssay()">↺ Reset</span>
+        </div>
+      </div>
+      <div class="card-box text-center" id="essay-ok" style="display:none">
+        <div class="success-icon">✅</div>
+        <h3>Essay Submitted Successfully!</h3>
+        <p class="success-sub">Your essay has been submitted for review.</p>
+        <div class="essay-stats">
+          <div class="stat-box blue"><div class="stat-val" id="final-wc">0</div><div class="stat-lbl">Total Words</div></div>
+          <div class="stat-box purple"><div class="stat-val">2</div><div class="stat-lbl">Task Type</div></div>
+          <div class="stat-box green"><div class="stat-val">✓</div><div class="stat-lbl">Completed</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SPEAKING ═══════════════════════ -->
+<div id="pg-speaking" class="page">
+  <div class="prac-hdr">
+    <h1>🎤 Speaking Practice</h1>
+    <p>Prepare for speaking tests with topic-based questions</p>
+  </div>
+  <div class="speaking-area">
+    <div class="q-grid">
+      <div class="q-card active" onclick="selQ(0,this)"><div class="part-tag">Part 1</div><div class="q-text">Can you describe your hometown?</div></div>
+      <div class="q-card" onclick="selQ(1,this)"><div class="part-tag">Part 1</div><div class="q-text">What do you do for work or study?</div></div>
+      <div class="q-card" onclick="selQ(2,this)"><div class="part-tag">Part 2</div><div class="q-text">Describe a memorable journey you have taken.</div></div>
+      <div class="q-card" onclick="selQ(3,this)"><div class="part-tag">Part 3</div><div class="q-text">How has technology changed the way people communicate?</div></div>
+    </div>
+    <div class="timer-box">
+      <div class="t-num" id="spk-timer">2:00</div>
+      <div class="t-lbl" id="spk-lbl">Press the mic to start recording</div>
+      <button class="rec-btn" onclick="toggleRec(this)" id="rec-btn">🎤</button>
+    </div>
+    <div class="card-box">
+      <h3 class="tips-title">Tips for this question</h3>
+      <ul id="spk-tips" class="spk-tips-list">
+        <li>Speak for 1–2 minutes</li>
+        <li>Include details about location, size, and atmosphere</li>
+        <li>Mention what makes it special or unique</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ MOCK TEST ═══════════════════════ -->
+<div id="pg-mock" class="page">
+  <div class="prac-hdr">
+    <h1>🏆 Full Mock Test</h1>
+    <p>Take a timed IELTS simulation covering all 4 sections</p>
+  </div>
+  <div class="mock-area">
+    <div class="test-sections">
+      <div class="test-sec-card"><div class="ts-icon">🎧</div><h3>Listening</h3><p>4 sections, 40 questions</p><span class="dur-badge">30 minutes</span></div>
+      <div class="test-sec-card"><div class="ts-icon">📄</div><h3>Reading</h3><p>3 passages, 40 questions</p><span class="dur-badge">60 minutes</span></div>
+      <div class="test-sec-card"><div class="ts-icon">✏️</div><h3>Writing</h3><p>2 tasks, academic/general</p><span class="dur-badge">60 minutes</span></div>
+      <div class="test-sec-card"><div class="ts-icon">🎤</div><h3>Speaking</h3><p>3 parts, examiner interview</p><span class="dur-badge">11–14 minutes</span></div>
+    </div>
+    <div class="start-cta">
+      <h2>Ready for your full IELTS simulation?</h2>
+      <p>This timed mock test mirrors the real IELTS format. Make sure you have 3 hours available.</p>
+      <span class="btn btn-white-blue" onclick="toast('Mock test starting… Good luck! 🍀')">Start Full Mock Test</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ LEADERBOARD ═══════════════════════ -->
+<div id="pg-leaderboard" class="page">
+  <div class="prac-hdr">
+    <h1>🏆 Leaderboard</h1>
+    <p>Top performers and their IELTS practice scores</p>
+  </div>
+  <div class="lb-area">
+    <div class="lb-stats">
+      <div class="lb-stat"><div class="icon-ring yellow">🏆</div><div class="lb-val accent">8.5</div><div class="lb-lbl">Highest Score</div></div>
+      <div class="lb-stat"><div class="icon-ring blue">🎖️</div><div class="lb-val">1,247</div><div class="lb-lbl">Active Learners</div></div>
+      <div class="lb-stat"><div class="icon-ring green">📈</div><div class="lb-val green-text">+18%</div><div class="lb-lbl">Avg Improvement</div></div>
+    </div>
+    <div class="lb-table">
+      <div class="lb-row lb-hdr">
+        <div>Rank</div><div>Student</div><div class="right">Score</div><div class="right">Tests</div><div class="right">Improvement</div>
+      </div>
+      <div class="lb-row"><div class="lb-rank">🥇</div><div class="lb-name-cell"><div class="lb-av av-blue">SC</div>Sarah Chen</div><div class="lb-score green-text">8.5</div><div class="lb-tests">12</div><div class="lb-improve">+15%</div></div>
+      <div class="lb-row"><div class="lb-rank">🥈</div><div class="lb-name-cell"><div class="lb-av av-purple">MA</div>Mohammed Ali</div><div class="lb-score green-text">8.0</div><div class="lb-tests">10</div><div class="lb-improve">+12%</div></div>
+      <div class="lb-row"><div class="lb-rank">🥉</div><div class="lb-name-cell"><div class="lb-av av-amber">EW</div>Emma Watson</div><div class="lb-score blue-text">7.5</div><div class="lb-tests">15</div><div class="lb-improve">+18%</div></div>
+      <div class="lb-row"><div class="lb-rank muted">4</div><div class="lb-name-cell"><div class="lb-av av-cyan">CR</div>Carlos Rodriguez</div><div class="lb-score blue-text">7.5</div><div class="lb-tests">8</div><div class="lb-improve">+10%</div></div>
+      <div class="lb-row"><div class="lb-rank muted">5</div><div class="lb-name-cell"><div class="lb-av av-red">YT</div>Yuki Tanaka</div><div class="lb-score orange-text">7.0</div><div class="lb-tests">14</div><div class="lb-improve">+20%</div></div>
+      <div class="lb-row"><div class="lb-rank muted">6</div><div class="lb-name-cell"><div class="lb-av av-green">PS</div>Priya Sharma</div><div class="lb-score orange-text">7.0</div><div class="lb-tests">11</div><div class="lb-improve">+14%</div></div>
+      <div class="lb-row"><div class="lb-rank muted">7</div><div class="lb-name-cell"><div class="lb-av av-indigo">JP</div>James Park</div><div class="lb-score orange-text">6.5</div><div class="lb-tests">9</div><div class="lb-improve">+8%</div></div>
+      <div class="lb-row"><div class="lb-rank muted">8</div><div class="lb-name-cell"><div class="lb-av av-pink">SG</div>Sofia Garcia</div><div class="lb-score orange-text">6.5</div><div class="lb-tests">13</div><div class="lb-improve">+16%</div></div>
+      <div class="lb-row"><div class="lb-rank muted">9</div><div class="lb-name-cell"><div class="lb-av av-blue">AH</div>Ahmed Hassan</div><div class="lb-score muted">6.0</div><div class="lb-tests">7</div><div class="lb-improve">+11%</div></div>
+      <div class="lb-row"><div class="lb-rank muted">10</div><div class="lb-name-cell"><div class="lb-av av-sky">LZ</div>Lisa Zhang</div><div class="lb-score muted">6.0</div><div class="lb-tests">10</div><div class="lb-improve">+13%</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ ARTICLES ═══════════════════════ -->
+<div id="pg-articles" class="page">
+  <div class="prac-hdr">
+    <h1>📰 Articles</h1>
+    <p>Improve your reading and expand your knowledge</p>
+  </div>
+  <div class="articles-inner">
+    <div class="features-grid">
+      <div class="feat-card no-hover"><div class="feat-icon" style="background:#eff6ff">🌍</div><h3>Climate Change and Urban Life</h3><p>How rising temperatures are reshaping city planning and public health strategies worldwide.</p><span class="article-meta">Advanced · 8 min read</span></div>
+      <div class="feat-card no-hover"><div class="feat-icon" style="background:#f0fdf4">🤖</div><h3>Artificial Intelligence in Education</h3><p>Exploring the potential of AI tutors, adaptive learning systems, and personalised curricula.</p><span class="article-meta">Intermediate · 6 min read</span></div>
+      <div class="feat-card no-hover"><div class="feat-icon" style="background:#fff7ed">💼</div><h3>The Future of Remote Work</h3><p>Post-pandemic workplace trends, hybrid models, and implications for productivity and well-being.</p><span class="article-meta">Intermediate · 5 min read</span></div>
+      <div class="feat-card no-hover"><div class="feat-icon" style="background:#f5f3ff">🧠</div><h3>Mental Health Awareness</h3><p>Breaking the stigma around mental health in academic environments and the workplace.</p><span class="article-meta">Intermediate · 7 min read</span></div>
+      <div class="feat-card no-hover"><div class="feat-icon" style="background:#fef2f2">🌱</div><h3>Sustainable Agriculture</h3><p>Innovations in farming technology designed to feed a growing population while protecting ecosystems.</p><span class="article-meta">Advanced · 9 min read</span></div>
+      <div class="feat-card no-hover"><div class="feat-icon" style="background:#fefce8">🚀</div><h3>Space Exploration in the 21st Century</h3><p>Commercial spaceflight, Mars missions, and what it means for the future of humanity.</p><span class="article-meta">Advanced · 10 min read</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ LOGIN ═══════════════════════ -->
+<div id="pg-login" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="auth-icon">📖</div>
+        <h1>Adiba's IELTS</h1>
+        <p>Master English with Effective Learning</p>
+      </div>
+      <h2>Welcome Back</h2>
+      <p class="auth-sub">Sign in to continue your learning journey</p>
+      <div id="login-err" class="err-msg" style="display:none"></div>
+      <div class="field">
+        <label>Email Address</label>
+        <div class="input-wrap"><span class="ico">📧</span><input type="email" id="login-email" placeholder="your.email@example.com"/></div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="input-wrap"><span class="ico">🔒</span><input type="password" id="login-pass" placeholder="••••••••"/></div>
+      </div>
+      <div class="forgot-row"><a class="forgot-link">Forgot password?</a></div>
+      <span class="btn btn-primary btn-full" onclick="doLogin()">🔐 Sign In</span>
+      <div class="auth-ftr">Don't have an account? <a onclick="go('signup')">Sign up for free</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SIGNUP ═══════════════════════ -->
+<div id="pg-signup" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="auth-icon">📖</div>
+        <h1>Adiba's IELTS</h1>
+        <p>Master English with Effective Learning</p>
+      </div>
+      <h2>Create Account</h2>
+      <p class="auth-sub">Start your IELTS preparation journey today</p>
+      <div id="signup-err" class="err-msg" style="display:none"></div>
+      <div class="field">
+        <label>Full Name</label>
+        <div class="input-wrap"><span class="ico">👤</span><input type="text" id="signup-name" placeholder="Your full name"/></div>
+      </div>
+      <div class="field">
+        <label>Email Address</label>
+        <div class="input-wrap"><span class="ico">📧</span><input type="email" id="signup-email" placeholder="your.email@example.com"/></div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="input-wrap"><span class="ico">🔒</span><input type="password" id="signup-pass" placeholder="Min. 6 characters"/></div>
+      </div>
+      <span class="btn btn-primary btn-full" onclick="doSignup()">🚀 Create Account</span>
+      <div class="auth-ftr">Already have an account? <a onclick="go('login')">Sign in</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast-el"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
+<div id="announcementBox"></div>
+
+<script>
+let announcement = localStorage.getItem("announcement");
+
+if(announcement){
+document.getElementById("announcementBox").innerText = announcement;
+}
+</script>
