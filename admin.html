@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>Admin Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
 <style>
+
 body{
-font-family: Arial;
+font-family:Arial;
 background:#f4f6f8;
 padding:40px;
 }
 
 .container{
-max-width:500px;
+max-width:700px;
 margin:auto;
 background:white;
 padding:30px;
@@ -30,13 +35,50 @@ background:#2563eb;
 color:white;
 border:none;
 cursor:pointer;
+border-radius:6px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.section{
+margin-top:30px;
+padding-top:20px;
+border-top:1px solid #ddd;
 }
 
 #dashboard{
 display:none;
 margin-top:20px;
 }
+
+.success{
+color:green;
+margin-top:10px;
+}
+
+.file-list{
+margin-top:15px;
+}
+
+.file{
+background:#f1f5f9;
+padding:10px;
+margin-top:8px;
+border-radius:6px;
+display:flex;
+justify-content:space-between;
+}
+
+.delete-btn{
+background:#ef4444;
+padding:6px 10px;
+font-size:12px;
+}
+
 </style>
+
 </head>
 
 <body>
@@ -48,39 +90,239 @@ margin-top:20px;
 <input type="password" id="password" placeholder="Enter admin password">
 <button onclick="login()">Login</button>
 
-<div id="dashboard">
-<h3>Admin Dashboard</h3>
 
-<p>Add new IELTS announcement:</p>
+<div id="dashboard">
+
+<h2>Admin Dashboard</h2>
+
+<!-- ANNOUNCEMENT -->
+
+<div class="section">
+
+<h3>Publish Announcement</h3>
 
 <input type="text" id="announcement" placeholder="Write announcement">
 
 <button onclick="publish()">Publish</button>
 
-<p id="result"></p>
+<p id="announceResult" class="success"></p>
+
+</div>
+
+
+<!-- READING -->
+
+<div class="section">
+
+<h3>Upload Reading Test</h3>
+
+<input type="file" id="readingFile">
+
+<button onclick="uploadReading()">Upload Reading Test</button>
+
+<p id="readingResult" class="success"></p>
+
+<div id="readingList" class="file-list"></div>
+
+</div>
+
+
+<!-- LISTENING -->
+
+<div class="section">
+
+<h3>Upload Listening Audio</h3>
+
+<input type="file" id="listeningFile">
+
+<button onclick="uploadListening()">Upload Listening Audio</button>
+
+<p id="listeningResult" class="success"></p>
+
+<div id="listeningList" class="file-list"></div>
+
+</div>
+
 
 </div>
 
 </div>
+
 
 <script>
 
-function login(){
-let pass = document.getElementById("password").value;
+const supabase = window.supabase.createClient(
+"https://YOUR_PROJECT_URL.supabase.co",
+"YOUR_ANON_KEY"
+);
 
-if(pass === "admin123"){
+function login(){
+...
+
+
+/* LOGIN */
+
+function login(){
+
+let pass=document.getElementById("password").value;
+
+if(pass==="admin123"){
+
 document.getElementById("dashboard").style.display="block";
+
+loadReading();
+loadListening();
+
 }else{
+
 alert("Wrong password");
+
 }
+
 }
+
+
+/* ANNOUNCEMENT */
 
 function publish(){
-let text = document.getElementById("announcement").value;
+
+let text=document.getElementById("announcement").value;
 
 localStorage.setItem("announcement",text);
 
-document.getElementById("result").innerText="Announcement saved!";
+document.getElementById("announceResult").innerText="Announcement published!";
+
+}
+
+
+/* UPLOAD READING */
+
+async function uploadReading(){
+
+const file=document.getElementById("readingFile").files[0];
+
+if(!file){
+alert("Select a file");
+return;
+}
+
+const { data,error } = await supabase.storage
+.from("reading-tests")
+.upload(file.name,file);
+
+if(error){
+alert("Upload failed");
+}else{
+
+document.getElementById("readingResult").innerText="Reading test uploaded!";
+
+loadReading();
+
+}
+
+}
+
+
+/* UPLOAD LISTENING */
+
+async function uploadListening(){
+
+const file=document.getElementById("listeningFile").files[0];
+
+if(!file){
+alert("Select audio file");
+return;
+}
+
+const { data,error } = await supabase.storage
+.from("listening-tests")
+.upload(file.name,file);
+
+if(error){
+alert("Upload failed");
+}else{
+
+document.getElementById("listeningResult").innerText="Listening audio uploaded!";
+
+loadListening();
+
+}
+
+}
+
+
+/* LOAD READING FILES */
+
+async function loadReading(){
+
+const { data } = await supabase.storage
+.from("reading-tests")
+.list();
+
+const container=document.getElementById("readingList");
+
+container.innerHTML="";
+
+data.forEach(file=>{
+
+container.innerHTML+=`
+<div class="file">
+${file.name}
+<button class="delete-btn" onclick="deleteReading('${file.name}')">Delete</button>
+</div>
+`;
+
+});
+
+}
+
+
+/* LOAD LISTENING FILES */
+
+async function loadListening(){
+
+const { data } = await supabase.storage
+.from("listening-tests")
+.list();
+
+const container=document.getElementById("listeningList");
+
+container.innerHTML="";
+
+data.forEach(file=>{
+
+container.innerHTML+=`
+<div class="file">
+${file.name}
+<button class="delete-btn" onclick="deleteListening('${file.name}')">Delete</button>
+</div>
+`;
+
+});
+
+}
+
+
+/* DELETE FILES */
+
+async function deleteReading(name){
+
+await supabase.storage
+.from("reading-tests")
+.remove([name]);
+
+loadReading();
+
+}
+
+async function deleteListening(name){
+
+await supabase.storage
+.from("listening-tests")
+.remove([name]);
+
+loadListening();
+
 }
 
 </script>
