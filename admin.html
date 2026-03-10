@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
 <meta charset="UTF-8">
 <title>Admin Dashboard</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <style>
 
 body{
-font-family:Arial;
+font-family: Arial;
 background:#f4f6f8;
 padding:40px;
 }
 
 .container{
-max-width:700px;
+max-width:600px;
 margin:auto;
 background:white;
 padding:30px;
@@ -35,11 +33,6 @@ background:#2563eb;
 color:white;
 border:none;
 cursor:pointer;
-border-radius:6px;
-}
-
-button:hover{
-background:#1d4ed8;
 }
 
 .section{
@@ -51,30 +44,6 @@ border-top:1px solid #ddd;
 #dashboard{
 display:none;
 margin-top:20px;
-}
-
-.success{
-color:green;
-margin-top:10px;
-}
-
-.file-list{
-margin-top:15px;
-}
-
-.file{
-background:#f1f5f9;
-padding:10px;
-margin-top:8px;
-border-radius:6px;
-display:flex;
-justify-content:space-between;
-}
-
-.delete-btn{
-background:#ef4444;
-padding:6px 10px;
-font-size:12px;
 }
 
 </style>
@@ -90,56 +59,48 @@ font-size:12px;
 <input type="password" id="password" placeholder="Enter admin password">
 <button onclick="login()">Login</button>
 
-
 <div id="dashboard">
 
 <h2>Admin Dashboard</h2>
 
-<!-- ANNOUNCEMENT -->
-
 <div class="section">
 
-<h3>Publish Announcement</h3>
+<h3>Post Announcement</h3>
 
 <input type="text" id="announcement" placeholder="Write announcement">
-
 <button onclick="publish()">Publish</button>
 
-<p id="announceResult" class="success"></p>
+<p id="result"></p>
 
 </div>
 
-
-<!-- READING -->
 
 <div class="section">
 
 <h3>Upload Reading Test</h3>
 
 <input type="file" id="readingFile">
-
-<button onclick="uploadReading()">Upload Reading Test</button>
-
-<p id="readingResult" class="success"></p>
-
-<div id="readingList" class="file-list"></div>
+<button onclick="uploadReading()">Upload Reading</button>
 
 </div>
 
-
-<!-- LISTENING -->
 
 <div class="section">
 
-<h3>Upload Listening Audio</h3>
+<h3>Upload Listening Test</h3>
 
 <input type="file" id="listeningFile">
+<button onclick="uploadListening()">Upload Listening</button>
 
-<button onclick="uploadListening()">Upload Listening Audio</button>
+</div>
 
-<p id="listeningResult" class="success"></p>
 
-<div id="listeningList" class="file-list"></div>
+<div class="section">
+
+<h3>Upload Mock Test</h3>
+
+<input type="file" id="mockFile">
+<button onclick="uploadMock()">Upload Mock Test</button>
 
 </div>
 
@@ -148,180 +109,109 @@ font-size:12px;
 
 </div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <script>
 
-const supabase = window.supabase.createClient(
-"https://YOUR_PROJECT_URL.supabase.co",
-"YOUR_ANON_KEY"
-);
-
 function login(){
 
-
-
-/* LOGIN */
-
-function login(){
-
-let pass=document.getElementById("password").value;
+let pass=document.getElementById("password").value
 
 if(pass==="admin123"){
 
-document.getElementById("dashboard").style.display="block";
-
-loadReading();
-loadListening();
+document.getElementById("dashboard").style.display="block"
 
 }else{
 
-alert("Wrong password");
+alert("Wrong password")
 
 }
 
 }
 
-
-/* ANNOUNCEMENT */
 
 function publish(){
 
-let text=document.getElementById("announcement").value;
+let text=document.getElementById("announcement").value
 
-localStorage.setItem("announcement",text);
+localStorage.setItem("announcement",text)
 
-document.getElementById("announceResult").innerText="Announcement published!";
+document.getElementById("result").innerText="Announcement saved!"
 
 }
 
 
-/* UPLOAD READING */
+const supabase = window.supabase.createClient(
+
+"https://YOUR_PROJECT_ID.supabase.co",
+"YOUR_ANON_PUBLIC_KEY"
+
+)
+
+
 
 async function uploadReading(){
 
-const file=document.getElementById("readingFile").files[0];
+const file=document.getElementById("readingFile").files[0]
 
-if(!file){
-alert("Select a file");
-return;
-}
-
-const { data,error } = await supabase.storage
+const {data,error}=await supabase.storage
 .from("reading-tests")
-.upload(file.name,file);
+.upload(file.name,file)
 
 if(error){
-alert("Upload failed");
+
+alert("Upload failed")
+
 }else{
 
-document.getElementById("readingResult").innerText="Reading test uploaded!";
-
-loadReading();
+alert("Reading test uploaded!")
 
 }
 
 }
 
 
-/* UPLOAD LISTENING */
 
 async function uploadListening(){
 
-const file=document.getElementById("listeningFile").files[0];
+const file=document.getElementById("listeningFile").files[0]
 
-if(!file){
-alert("Select audio file");
-return;
-}
-
-const { data,error } = await supabase.storage
+const {data,error}=await supabase.storage
 .from("listening-tests")
-.upload(file.name,file);
+.upload(file.name,file)
 
 if(error){
-alert("Upload failed");
+
+alert("Upload failed")
+
 }else{
 
-document.getElementById("listeningResult").innerText="Listening audio uploaded!";
-
-loadListening();
+alert("Listening uploaded!")
 
 }
 
 }
 
 
-/* LOAD READING FILES */
 
-async function loadReading(){
+async function uploadMock(){
 
-const { data } = await supabase.storage
-.from("reading-tests")
-.list();
+const file=document.getElementById("mockFile").files[0]
 
-const container=document.getElementById("readingList");
+const {data,error}=await supabase.storage
+.from("mock-tests")
+.upload(file.name,file)
 
-container.innerHTML="";
+if(error){
 
-data.forEach(file=>{
+alert("Upload failed")
 
-container.innerHTML+=`
-<div class="file">
-${file.name}
-<button class="delete-btn" onclick="deleteReading('${file.name}')">Delete</button>
-</div>
-`;
+}else{
 
-});
+alert("Mock test uploaded!")
 
 }
-
-
-/* LOAD LISTENING FILES */
-
-async function loadListening(){
-
-const { data } = await supabase.storage
-.from("listening-tests")
-.list();
-
-const container=document.getElementById("listeningList");
-
-container.innerHTML="";
-
-data.forEach(file=>{
-
-container.innerHTML+=`
-<div class="file">
-${file.name}
-<button class="delete-btn" onclick="deleteListening('${file.name}')">Delete</button>
-</div>
-`;
-
-});
-
-}
-
-
-/* DELETE FILES */
-
-async function deleteReading(name){
-
-await supabase.storage
-.from("reading-tests")
-.remove([name]);
-
-loadReading();
-
-}
-
-async function deleteListening(name){
-
-await supabase.storage
-.from("listening-tests")
-.remove([name]);
-
-loadListening();
 
 }
 
